@@ -34,32 +34,34 @@ pizzaType =  [
 print("\nALL PIZZAS EXCEPT THE SUPREME PACKAGE COMES PLAIN WITH CHEESE AND TOMATO SAUCE \n\nTHERE ARE CHOICES FOR OPTIONAL TOPPINGS THOUGH")
 
 
-def userAlgorithm():
+def pizzaAlgorithm():
     i = 0
     # interesting thingy going on here, i set the first item in the list to be an empty string so that when user selects 1 it'll not give them medium pizza instead of the ideal small pizza which it should've given them
     options = ["",]
+    optionPrices = ["",]
     for pizza in pizzaType:
         i+=1
         for choice, attr in pizza.items():
             print(f"{i}) {choice} : {attr[0]}$")
             options.append(choice)
+            optionPrices.append(attr[0])
 
-    listChoiceIndex = int(input("WHAT KIND OF PIZZA WOULD YOU LIKE : \nSELECT BY ENTERING THE INDEX OF THE PIZZA: "))
-    if (options[listChoiceIndex] <= options[3]):       
-        print(f"you have chosen {options[listChoiceIndex]}, and you are eligible to get toppings") 
+    ChoiceIndex = int(input("\nWHAT KIND OF PIZZA WOULD YOU LIKE : \nSELECT BY ENTERING THE NUMBER OF THE PIZZA: "))
 
-        print("\nTOPPINGS")
-        for topping in toppings:
-            for choice, attr in topping.items():
-                print(f"{choice} : {attr}$")
+    if (ChoiceIndex > 0 and ChoiceIndex < 4):       
+        print(f"\nYou have chosen the {options[ChoiceIndex].upper()}, and you are eligible to get toppings") 
+
+        wantToppings = input("\nDO YOU WANT TOPPINGS WITH YOUR PIZZA? (Y/N): ").lower()
+
+        if (wantToppings == "y" or wantToppings == "yes" ):
+            print("\nTOPPINGS")
+            for topping in toppings:
+                for choice, attr in topping.items():
+                    print(f"{choice} : {attr}$")
+        elif (wantToppings == "n" or wantToppings == "no" ):
+            print(f"\nYou have opted to have your {options[ChoiceIndex].upper()} without any toppings\nThat'll cost you {optionPrices[ChoiceIndex]}$ \n\nYOUR ORDER: \n{options[ChoiceIndex].upper()} : {optionPrices[ChoiceIndex]}$ \n\nTHANK YOU FOR SHOPPING WITH US !!! ")
+
+            print(f"")
 
 
-
-userAlgorithm()
-# print("\nPIZZA\n")
-
-# pizzaChoice = 
-
-# if (pizzaChoice == ) :
-
-
+pizzaAlgorithm()
