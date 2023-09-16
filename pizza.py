@@ -78,30 +78,31 @@ def pizzaAlgorithm():
 
                 toppingChoice.pop()
                 
-                # CHAT GPT'S CODE #STARTS HERE
+                ###################
                 chosenToppings = [toppingName[int(tops)] for tops in toppingChoice if 1 <= int(tops) <= len(toppingName) - 1]
 
                 if chosenToppings:
                     if len(chosenToppings) == 1:
-                        print("You have chosen " + chosenToppings[0])
+                        print("\nYou have chosen " + chosenToppings[0])
+                        orderReconfirmation = f"\nYou have opted to have {pizzaName.upper()} with {chosenToppings[0]}"
+                        order = f"\n\nYOUR ORDER: \n{pizzaName.upper()} : ${pizzaPrice} \nTOPPINGS: {chosenToppings[0]} (EACH COST ${toppingPrice[1]})  \nTAX: ${tax} (STANDARD 6% VAT)"
                     else:
                         notLastTopping = ", ".join(chosenToppings[:-1])
                         lastTopping = chosenToppings[-1]
-                        print(f"You have chosen {notLastTopping}, and {lastTopping}")
-                    orderReconfirmation = f"\nYou have opted to have {pizzaName.upper()} with {notLastTopping}, and {lastTopping}"
+                        print(f"\nYou have chosen {notLastTopping}, and {lastTopping}")
+                        orderReconfirmation = f"\nYou have opted to have {pizzaName.upper()} with {notLastTopping}, and {lastTopping}"
+                        order = f"\n\nYOUR ORDER: \n{pizzaName.upper()} : ${pizzaPrice} \nTOPPINGS: {notLastTopping}, and {lastTopping} (EACH COST ${toppingPrice[1]})  \nTAX: ${tax} (STANDARD 6% VAT)"
 
                     grossPrice += toppingPrice[1] * int(len(chosenToppings)) 
                     orderCost = f"\nThat'll cost you ${grossPrice}"
 
-                    order = f"\n\nYOUR ORDER: \n{pizzaName.upper()} : ${pizzaPrice} \nTOPPINGS: {notLastTopping}, and {lastTopping} (EACH COST ${toppingPrice[1]})  \nTAX: ${tax} (STANDARD 6% VAT)"
                     
                     closingRemark = f"\n\nTHANK YOU FOR SHOPPING WITH US !!!"
 
                     print(f"{orderReconfirmation}{orderCost}{order}{closingRemark}")
                 else:
                     print("No toppings chosen.")
-
-                # CHAT GPT'S CODE ENDS HERE
+                #####################
 
             elif (choiceIndex == 2):
                 for topping in toppings:
